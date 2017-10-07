@@ -11,6 +11,8 @@ to rules made for a new all-in-one addon: [uMatrix](https://addons.mozilla.org/f
 Moreover, this project allows to uses uMatrix easily in conjonction or replacement
 of the JavaScript blocker [NoScript](https://addons.mozilla.org/fr/firefox/addon/noscript/).
 
+![screenshot](umatrix-converter.png)
+
 # Installation
 
 ## Core
@@ -104,7 +106,7 @@ We need 3 optional files; 2 from actual-addons and 1 from Firefox itself (See *H
 You can obtain it with a click on its icon, then `White list` tab then click on `export button`;
 
 - Request Policy export;
-
+Go to about:addons, click on "preferences" in front of "RequestPolicy", then click on "Export" tab, and on the button "Export to file"
 
 - Firefox permissions database: `permissions.sqlite`;
 You can obtain it in your browser profile folder: `~/.mozilla/firefox/????.default/` on GNU/Linux or `%APPDATA%\Mozilla\Firefox\Profiles\????.default/`on Windows.
@@ -154,7 +156,6 @@ Then, go to your web browser at the url: http://127.0.0.1:4000/umatrix-converter
 
 The website is a basic form where you can upload your files and get uMatrix rules at the end of the process.
 
-![screenshot](umatrix-converter.png).
 
 ## Import into uMatrix
 
