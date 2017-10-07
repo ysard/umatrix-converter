@@ -58,7 +58,7 @@ class RequestPolicyParser(ConfigParser):
     def read_file(self, filepath):
         """Open RequestPolicy export
 
-        .. note:: 2 sections: 'UKN', 'origins-to-destinations', 'destinations'
+        .. note:: 4 sections: 'UKN', 'origins-to-destinations', 'destinations'
             & 'origins'
         """
 
