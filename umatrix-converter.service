@@ -1,0 +1,16 @@
+[Unit]
+Description=uMatrix Converter
+#Requires=network.socket
+After=network.target
+
+[Service]
+PIDFile=/run/umatrix.pid
+Group=www-data
+WorkingDirectory=/project/directory
+Environment="PATH=/usr/local/bin"
+ExecStart=/usr/local/bin/gunicorn --access-logfile /var/log/umatrix/access.log --error-logfile /var/log/umatrix/error.log --timeout 13 --workers 1 --pid /run/umatrix.pid --bind unix:/run/umatrix.sock -m 007 website:app
+ExecReload=/bin/kill -s HUP $MAINPID 
+ExecStop=/bin/kill -s TERM $MAINPID 
+
+[Install]
+WantedBy=multi-user.target

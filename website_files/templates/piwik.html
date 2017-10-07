@@ -1,0 +1,23 @@
+{% if PIWIK_URL and PIWIK_SITE_ID %}
+<!-- Piwik -->
+<script type="text/javascript">
+	var _paq = _paq || [];
+	//_paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+	_paq.push(["trackPageView"]);
+	_paq.push(["enableLinkTracking"]);
+
+	(function() {
+		var u=(("https:" == document.location.protocol) ? "https" : "http") + "://{{ PIWIK_URL }}/";
+		//_paq.push(['setTrackerUrl', u+'piwik.php']);
+		_paq.push(["setTrackerUrl", u+"php"]);
+		_paq.push(["setSiteId", "{{ PIWIK_SITE_ID }}"]);
+		var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+		g.defer=true; g.async=true; g.src=u+"js"; s.parentNode.insertBefore(g,s);
+		//g.src=u+'piwik.js'
+	})();
+</script>
+<!-- Piwik Image Tracker -->
+<noscript><p><img src="http://{{ PIWIK_URL }}/php?idsite={{ PIWIK_SITE_ID }}&amp;rec=1" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik -->
+<!-- End Piwik Code -->
+{% endif %}

@@ -1,0 +1,31 @@
+
+#header h1 a {
+	color: black;
+}
+
+.ico {
+	width: 25px;
+	vertical-align: bottom;
+	margin-right: 5px;
+}
+
+#content {
+    min-height: 500px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+#upload_form {
+    padding: 20px;
+
+}
+
+/* Footer */
+/* Set black background color, white text and some padding */
+footer {
+    /*background-color: #555;*/
+    color: white;
+    padding: 15px;
+}

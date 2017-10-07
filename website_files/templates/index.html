@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{% block title %}uMatrix Converter{% endblock %}</title>
+
+	{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ nginx_prefix }}{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ nginx_prefix }}{{ url_for('static', filename='css/jquery-ui.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ nginx_prefix }}{{ url_for('static', filename='css/styles.css') }}">
+	{% endblock %}
+</head>
+
+<body>
+	{% block header %}
+	<div id="header" class="page-header">
+		<div class="container">
+			<h1><a href=''>{{ self.title() }}</a></h1>
+			<div class="text-info">
+				Follow the project on <a href="https://github.com/ysard/umatrix-converter">Github/umatrix-converter</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div id="content">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+
+					<h2>Choose config files :</h2>
+
+					{% endblock %}
+						{% for category in ['danger', 'success'] %}
+						{% with msgs = get_flashed_messages(category_filter=[category]) %}
+							{% if msgs %}
+								{% for msg in msgs %}
+								<div class="alert alert-{{ category }} fade in">
+									<p class="center-block">{{ msg|safe }}</p>
+								</div>
+								{% endfor %}
+							{% endif %}
+						{% endwith %}
+					{% endfor %}
+
+					<form id="upload_form" action="#" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="ns_fic">
+							<img class="ico" alt="no script icon" src="{{ nginx_prefix }}{{ url_for('static', filename='images/noscript.png') }}" /> NoScript export :</label>
+							<input id="ns_fic" class="filestyle" type="file" name="ns_fic" />
+						</div>
+						<div class="form-group">
+							<label for="rp_fic">
+							<img class="ico" alt="request policy icon" src="{{ nginx_prefix }}{{ url_for('static', filename='images/requestpolicy.png') }}" /> RequestPolicy export :</label>
+							<input id="rp_fic" class="filestyle" type="file" name="rp_fic" />
+						</div>
+						<div class="form-group">
+							<label for="fp_fic">
+							<img class="ico" alt="cookie monster icon" src="{{ nginx_prefix }}{{ url_for('static', filename='images/cookie-monster.png') }}" /> Firefox permissions.sqlite :</label>
+							<input id="fp_fic" class="filestyle" type="file" name="fp_fic" />
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" name="advanced" value="true"> Advanced rules </label>
+						</div>
+						<button type="submit" class="btn btn-default btn-lg btn-block">Submit</button>
+					</form>
+
+					<!--<button type="button" class="btn btn-success btn-lg btn-block">Success</button>-->
+				</div>
+			</div>
+		</div>
+
+		<footer class="container-fluid text-center">
+			<div class="text-info">Web site revised, expanded and maintained by Lex © 2017</div>
+			<a href="http://validator.w3.org/check/referer" target="_blank" rel="nofollow">Validation HTML 5</a>
+		</footer>
+	</div>
+
+	{% block javascript %}
+	<script src="{{ nginx_prefix }}{{ url_for('static', filename='js/jquery-2.0.0.min.js') }}"></script>
+	<script src="{{ nginx_prefix }}{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+	{# Custom button Choose file: http://markusslima.github.io/bootstrap-filestyle/1.2.3/ #}
+	<script src="{{ nginx_prefix }}{{ url_for('static', filename='js/bootstrap-filestyle.min.js') }}"> </script>
+	{% endblock %}
+
+	{% include 'piwik.html' %}
+
+</body>
+</html>
